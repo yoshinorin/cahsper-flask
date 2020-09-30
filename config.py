@@ -3,7 +3,7 @@ import os
 class BaseConfig(object):
     DEBUG = False
     TESTING = False
-    SQLALCHEMY_DATABASE_URI = os.getenv('CAHSPER_DB_URL', 'mariadb://{user}:{password}@127.0.0.1/cahsper?useUnicode=true&characterEncoding=utf8mb4').format(**{
+    SQLALCHEMY_DATABASE_URI = os.getenv('CAHSPER_DB_URL', 'mysql+pymysql://{user}:{password}@127.0.0.1/cahsper').format(**{
         'user': os.getenv('CAHSPER_DB_USER', 'root'),
         'password': os.getenv('CAHSPER_DB_PASSWORD', 'pass')
     })
