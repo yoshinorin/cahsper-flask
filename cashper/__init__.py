@@ -2,24 +2,16 @@ import os
 
 from flask import Flask
 
-#def create_app(test_config=None):
-app = Flask(__name__)
-app.config.from_mapping(
-    SECRET_KEY='dev'
-)
+cashper = Flask(__name__)
 
-#if test_config is None:
-app.config.from_pyfile('config.py', silent=False)
-#else:
-#    app.config.from_mapping(test_config)
+# TODO: stop hard-code
+cashper.config.from_object('config.DevelopmentConfig')
 
 try:
-    os.makedirs(app.instance_path)
+    os.makedirs(cashper.instance_path)
 except OSError:
     pass
 
-#    @app.route('/hello')
-#    def hello():
-#        return "Hoge"
+from cashper.routes.api_status import module_status
 
-#    return app
+cashper.register_blueprint(module_status)
