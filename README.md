@@ -1,4 +1,6 @@
-**NOTE: Sandbox for python with Flask**
+**NOTE: Sandbox for learning python and Flask with Cahsper**
+
+> Original Cahsper [is here](https://github.com/YoshinoriN/cahsper).
 
 ## Install pyenv
 
