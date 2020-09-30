@@ -57,7 +57,7 @@ $ pipenv install flask flask-sqlalchemy
 
 ```
 $ pipenv shell
-$ export FLASK_APP=cashper
+$ export FLASK_APP=cahsper
 $ export FLASK_ENV=development
 $ flask run
 ```
