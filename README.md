@@ -48,5 +48,16 @@ $ pipenv --python 3.8.6
 > [Flask SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
 ```sh
-pipenv install flask flask-sqlalchemy
+$ pipenv install flask flask-sqlalchemy
 ```
+
+## Run application
+
+```
+$ pipenv shell
+$ export FLASK_APP=cashper
+$ export FLASK_ENV=development
+$ flask run
+```
+
+> http://127.0.0.1:5000
