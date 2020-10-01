@@ -17,6 +17,8 @@ except OSError:
 
 from cahsper.routes.api_status import module_status
 from cahsper.routes.users import module_users
+from cahsper.routes.comments import module_comments
 
 cahsper.register_blueprint(module_status)
 cahsper.register_blueprint(module_users)
+cahsper.register_blueprint(module_comments)
