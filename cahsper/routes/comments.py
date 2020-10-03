@@ -11,4 +11,3 @@ def get_comments():
         comments.append(comment.serialize())
 
     return Response(response=json.dumps(comments), status=200, content_type='application/json')
-
