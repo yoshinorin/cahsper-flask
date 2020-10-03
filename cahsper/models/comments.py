@@ -1,5 +1,6 @@
 import cahsper
 
+from typing import List
 from cahsper import db
 
 class Comments(db.Model):
@@ -16,10 +17,10 @@ class Comments(db.Model):
     created_at = db.Column(db.BigInteger(), name='created_at', unique=False, nullable=False, default=0)
 
     @classmethod
-    def get_all(cls):
+    def get_all(cls) -> List['Comments']:
         return db.session.query(cls).all()
 
-    def serialize(self):
+    def serialize(self) -> dict:
         return {
             'id': self.id,
             'user_name': self.user_name,
