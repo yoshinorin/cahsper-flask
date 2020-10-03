@@ -58,10 +58,14 @@ $ pipenv install flask flask-sqlalchemy
 ## Run application
 
 ```
-$ pipenv shell
-$ export FLASK_APP=cahsper
-$ export FLASK_ENV=development
-$ flask run
+$ sh run.sh
+
+ * Serving Flask app "cahsper" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
 ```
 
 > http://127.0.0.1:5000
