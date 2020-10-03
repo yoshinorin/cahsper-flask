@@ -11,5 +11,5 @@ def get_user(user_name):
 @module_users.route("/users", methods=['GET'])
 def get_users():
     users = Users.get_all()
-    print(users)
+
     return jsonify(users)
