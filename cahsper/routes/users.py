@@ -1,6 +1,8 @@
 import json
+
 from flask import Blueprint, Response
 from cahsper.models.users import Users
+from cahsper.models.comments import Comments
 
 module_users = Blueprint('users', __name__)
 
@@ -18,3 +20,11 @@ def get_users():
         users.append(user.serialize())
 
     return Response(response=json.dumps(users), status=200, content_type='application/json')
+
+@module_users.route("/users/<user_name>/comments", methods=['GET'], strict_slashes=False)
+def get_user_comments(user_name):
+    comments = []
+    for comment in Comments.find_by_username(user_name):
+        comments.append(comment.serialize())
+
+    return Response(response=json.dumps(comments), status=200, content_type='application/json')

@@ -25,6 +25,17 @@ class Comments(db.Model):
         """
         return db.session.query(cls).all()
 
+    @classmethod
+    def find_by_username(cls, _user_name: str) -> List['Comments']:
+        """find comments by userName
+
+        Args:
+            _user_name(str): user name
+        Returns:
+            List['Comments']
+        """
+        return cls.query.filter(cls.user_name == _user_name).all()
+
     def serialize(self) -> dict:
         """return serialized comment
 
