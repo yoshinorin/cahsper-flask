@@ -4,7 +4,7 @@ from cahsper.models.comments import Comments
 
 module_comments = Blueprint('comments', __name__)
 
-@module_comments.route("/comments", methods=['GET'])
+@module_comments.route("/comments", methods=['GET'], strict_slashes=False)
 def get_comments():
     comments = []
     for comment in Comments.get_all():
