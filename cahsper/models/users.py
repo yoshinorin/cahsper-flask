@@ -1,11 +1,7 @@
 import cahsper
 
-# https://docs.python.org/3/library/dataclasses.html
-# https://stackoverflow.com/questions/5022066/how-to-serialize-sqlalchemy-result-to-json/7032311
-from dataclasses import dataclass
 from cahsper import db
 
-@dataclass
 class Users(db.Model):
     __tablename__ = 'users'
 
@@ -18,9 +14,15 @@ class Users(db.Model):
 
     @classmethod
     def find_by_name(cls, _name: str):
-        return cls.query.filter(cls.name == _name).all()
+        return cls.query.filter(cls.name == _name).one_or_none()
 
     @classmethod
     def get_all(cls):
         return db.session.query(cls).all()
+
+    def serialize(self):
+        return {
+            'name': self.name,
+            'created_at': self.created_at
+        }
 

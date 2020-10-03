@@ -1,11 +1,7 @@
 import cahsper
 
-# https://docs.python.org/3/library/dataclasses.html
-# https://stackoverflow.com/questions/5022066/how-to-serialize-sqlalchemy-result-to-json/7032311
-from dataclasses import dataclass
 from cahsper import db
 
-@dataclass
 class Comments(db.Model):
     __tablename__ = 'comments'
 
@@ -22,4 +18,12 @@ class Comments(db.Model):
     @classmethod
     def get_all(cls):
         return db.session.query(cls).all()
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'user_name': self.user_name,
+            'comment': self.comment,
+            'created_at': self.created_at
+        }
 
