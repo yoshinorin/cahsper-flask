@@ -18,9 +18,19 @@ class Comments(db.Model):
 
     @classmethod
     def get_all(cls) -> List['Comments']:
+        """get all users comments
+
+        Returns:
+            List['Comments']
+        """
         return db.session.query(cls).all()
 
     def serialize(self) -> dict:
+        """return serialized comment
+
+        Returns:
+            dict: serialized Comments class
+        """
         return {
             'id': self.id,
             'user_name': self.user_name,
