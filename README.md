@@ -55,6 +55,11 @@ $ pipenv --python 3.8.6
 $ pipenv install flask flask-sqlalchemy
 ```
 
+## Settings
+
+1. copy `.env.example` and rename it to `.env`
+2. change settings in `.env`
+
 ## Run application
 
 ```
