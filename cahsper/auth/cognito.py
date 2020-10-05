@@ -16,7 +16,7 @@ class Cognito:
     jwk_set = requests.get(cognito_jwk_url).json()
 
     @classmethod
-    def validate_jwt(cls, token):
+    def validate_jwt(cls, token) -> dict:
 
         header = jwt.get_unverified_header(token)
         jwk = next(filter(lambda x: x['kid'] == header['kid'], cls.jwk_set['keys']))
@@ -42,7 +42,7 @@ class Cognito:
         if claims['iss'] != cls.cognito_iss:
             raise UnauthorizedException(description='Unauthorized error.')
 
-        print(claims)
+        return claims
 
 def jwt_validator(f):
     @wraps(f)
@@ -54,7 +54,8 @@ def jwt_validator(f):
         if len(token) != 2:
             raise UnauthorizedException(description='Unauthorized error.')
 
-        Cognito.validate_jwt(token[1])
+        kwargs['claims'] = Cognito.validate_jwt(token[1])
+
         return f(*args, **kwargs)
     return decorated_function
 

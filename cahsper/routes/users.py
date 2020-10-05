@@ -33,6 +33,6 @@ def get_user_comments(user_name):
 
 @module_users.route("/users/<user_name>/comments", methods=['POST'], strict_slashes=False)
 @jwt_validator
-def post_user_comments(user_name):
+def post_user_comments(user_name, claims):
 
     return Response(json.dumps({"message": "todo"}), status=404, content_type='application/json')
