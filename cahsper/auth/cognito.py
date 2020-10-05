@@ -34,21 +34,27 @@ class Cognito:
         )
 
         if claims['client_id'] != cls.cognito_app_client_id:
-            raise UnauthorizedException
+            raise UnauthorizedException(description='Unauthorized error.')
 
         if claims['token_use'] != 'access':
-            raise UnauthorizedException
+            raise UnauthorizedException(description='Unauthorized error.')
 
         if claims['iss'] != cls.cognito_iss:
-            raise UnauthorizedException
+            raise UnauthorizedException(description='Unauthorized error.')
 
         print(claims)
 
 def jwt_validator(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        token = request.headers['Authorization'].split()[1]
-        Cognito.validate_jwt(token)
+        if request.headers.get('Authorization') is None:
+            raise UnauthorizedException(description='Unauthorized error.')
+
+        token = request.headers['Authorization'].split()
+        if len(token) != 2:
+            raise UnauthorizedException(description='Unauthorized error.')
+
+        Cognito.validate_jwt(token[1])
         return f(*args, **kwargs)
     return decorated_function
 
