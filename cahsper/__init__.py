@@ -15,9 +15,9 @@ try:
 except OSError:
     pass
 
-from cahsper.routes.api_status import module_status
-from cahsper.routes.users import module_users
-from cahsper.routes.comments import module_comments
+from cahsper.routes.api_status import module_status    # noqa: #402
+from cahsper.routes.users import module_users          # noqa: #402
+from cahsper.routes.comments import module_comments    # noqa: #402
 
 cahsper.register_blueprint(module_status)
 cahsper.register_blueprint(module_users)

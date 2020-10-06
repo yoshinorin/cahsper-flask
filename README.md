@@ -75,6 +75,12 @@ $ sh run.sh
 
 > http://127.0.0.1:5000
 
+## Code Formatter
+
+```sh
+$ sh lint-fix.sh
+```
+
 ## Test
 
 ```
