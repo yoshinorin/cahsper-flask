@@ -83,6 +83,28 @@ $ sh lint-fix.sh
 
 ## Test
 
-```
+```sh
 $ pytest
+```
+
+with coverage
+
+```sh
+$ py.test --cov=cahsper ./test/
+
+----------- coverage: platform linux, python 3.8.6-final-0 -----------
+Name                           Stmts   Miss  Cover
+--------------------------------------------------
+cahsper/__init__.py               16      0   100%
+cahsper/auth/__init__.py           0      0   100%
+cahsper/auth/cognito.py           37     18    51%
+cahsper/models/comments.py        21      3    86%
+cahsper/models/users.py           17      2    88%
+cahsper/routes/api_status.py       5      0   100%
+cahsper/routes/comments.py        10      4    60%
+cahsper/routes/users.py           28     13    54%
+cahsper/utils/__init__.py          0      0   100%
+cahsper/utils/exceptions.py        7      0   100%
+--------------------------------------------------
+TOTAL                            141     40    72%
 ```
