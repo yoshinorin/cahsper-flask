@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from logging.config import dictConfig
 
 cahsper = Flask(__name__)
 
@@ -9,6 +10,26 @@ cahsper = Flask(__name__)
 cahsper.config.from_object('config.DevelopmentConfig')
 
 db = SQLAlchemy(cahsper)
+
+dictConfig({
+    'version': 1,
+    'formatters': {
+        'file': {
+            'format': '[%(asctime)s] [%(levelname)s] : %(message)s',
+        }
+    },
+    'handlers': {
+        'file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'file',
+            'filename': './logs/application.log'
+        }
+    },
+    'root': {
+        'level': 'WARN',
+        'handlers': ['file']
+    },
+})
 
 try:
     os.makedirs(cahsper.instance_path)

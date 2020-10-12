@@ -1,10 +1,12 @@
 import json
 from flask import Blueprint, Response
 from cahsper.models.comments import Comments
+from cahsper.utils.logger import http_request_logging
 
 module_comments = Blueprint('comments', __name__)
 
 @module_comments.route("/comments", methods=['GET'], strict_slashes=False)
+@http_request_logging
 def get_comments():
     comments = []
     for comment in Comments.get_all():
